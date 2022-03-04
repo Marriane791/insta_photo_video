@@ -5,7 +5,18 @@ from tkinter import *
 from PIL import ImageTk, Image
 import tkinter.font as font
 from tkinter import messagebox
-from instaloader import Instaloade
+from instaloader import Instaloader, Profile
+import instaloader
+
+#Function for the download button
+insta = instaloader.Instaloader()
+def download (link):
+    try:
+        insta.download_saved_posts(link)
+        messagebox.showinfo("Status", "Reel downloaded sucessfully")
+    except Exception as e :
+        messagebox.showerror("Error","Something went wrong")
+        print(e)
 
 
 root = Tk()
@@ -37,7 +48,7 @@ label2.place(relx=0.48, rely=0.25, relheight=0.1)
 entry = Entry(frame, font = FONT, fg="#fbad50")
 entry.place(relx=0.48, rely=0.35,relwidth=0.4, relheight=0.05)
 
-button1 = Button(root, text="Download", font=FONT, bg="pink", fg="white", activeforeground="pink",activebackground="black" ,command="" )
+button1 = Button(root, text="Download", font=FONT, bg="pink", fg="white", activeforeground="pink",activebackground="black" ,command="link" )
 button1.place(relx=0.48, rely=0.45, relwidth= 0.2, relheight=0.06)
 
 root.mainloop()
